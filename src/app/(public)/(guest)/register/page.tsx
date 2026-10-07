@@ -19,6 +19,7 @@ import { useRegisterMutation } from "@/store/api/authApi";
 import { useDispatch } from "react-redux";
 import { showAlert } from "@/store/slices/uiSlice";
 import type { AppDispatch } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 const registerSchema = z
   .object({
@@ -48,6 +49,7 @@ const registerSchema = z
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
@@ -81,6 +83,7 @@ export default function RegisterPage() {
           message: response.message,
         }),
       );
+      router.push("/login");
     } catch (error) {
       const apiError = error as {
         status?: number;

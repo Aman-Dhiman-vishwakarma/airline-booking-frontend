@@ -4,7 +4,7 @@ export const baseApi = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api",
+    baseUrl: "https://airline-booking-backend-bdzq.onrender.com/api",
     credentials: "include",
   }),
 
